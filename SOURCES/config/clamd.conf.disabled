@@ -1,0 +1,4 @@
+check process clamd with pidfile /var/run/clamd.scan/clamd.pid
+  start program = "/usr/bin/systemctl start clamd@scan"
+  stop  program = "/usr/bin/systemctl stop clamd@scan"
+  if 5 restarts within 5 cycles then timeout

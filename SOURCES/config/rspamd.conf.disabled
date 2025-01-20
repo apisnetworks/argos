@@ -1,0 +1,8 @@
+CHECK PROCESS rspamd  MATCHING 'rspamd'
+    START PROGRAM = "/bin/systemctl start rspamd"
+    STOP PROGRAM  = "/bin/systemctl stop rspamd"
+    IF FAILED UNIXSOCKET "/var/lib/rspamd/rspamd-worker.sock" PROTOCOL HTTP
+        REQUEST "/ping"
+        WITH TIMEOUT 15 SECONDS
+        FOR 2 TIMES WITHIN 5 CYCLES THEN RESTART
+    IF 3 RESTARTS WITHIN 5 CYCLES THEN ALERT

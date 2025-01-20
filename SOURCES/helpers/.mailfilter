@@ -1,0 +1,5 @@
+if (/From: monit@localhost/)
+{
+        cc "|ruby $HOME/notify.rb"
+        to $DEFAULT
+}

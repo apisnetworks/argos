@@ -1,0 +1,4 @@
+check filesystem home with path /home
+  if space usage > 99% then alert
+  if inode usage > 99% then alert
+

@@ -1,0 +1,4 @@
+CHECK PROCESS systemd-resolved  MATCHING 'systemd-resolved'
+    START PROGRAM = "/bin/systemctl start systemd-resolved"
+    STOP PROGRAM  = "/bin/systemctl stop systemd-resolved"
+    IF CPU > 50% for 2 CYCLES THEN RESTART
