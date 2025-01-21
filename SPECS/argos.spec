@@ -69,7 +69,7 @@ cp -af %{_sourcedir}/config/ etc/monit.d
 rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT
 install -D -m0644 --target-directory=$RPM_BUILD_ROOT/var/www/html/ %{_sourcedir}/monit.html
-install -D -m0600 --target-directory=$RPM_BUILD_ROOT/root/ %{_sourcedir}/helpers/.mailfilter 
+install -D -m0600 --target-directory=$RPM_BUILD_ROOT/root/ %{_sourcedir}/helpers/.mailfilter
 install -D -m0755 --target-directory=$RPM_BUILD_ROOT/root/ %{_sourcedir}/helpers/notify.rb
 install -d -m0700 $RPM_BUILD_ROOT/etc/monit.d
 install -d -m0700 $RPM_BUILD_ROOT/var/spool/monit
@@ -85,22 +85,22 @@ Service monitoring engine for ApisCP
 %attr(0644, root, root) "/etc/monit.d/authlib.conf"
 %attr(0755, root, root) "/etc/monit.d/bins/mysqlcheck.sh"
 %attr(0755, root, root) "/etc/monit.d/bins/mysqlkill.sh"
-%attr(0644, root, root) "/etc/monit.d/clamd.conf.disabled"
+%attr(0644, root, root) "/etc/monit.d/clamd.conf"
 %attr(0644, root, root) "/etc/monit.d/dovecot.conf"
 %attr(0644, root, root) "/etc/monit.d/fail2ban.conf"
-%attr(0644, root, root) "/etc/monit.d/filesystem-home.conf.disabled"
+%attr(0644, root, root) "/etc/monit.d/filesystem-home.conf"
 %attr(0644, root, root) "/etc/monit.d/filesystem.conf"
 %attr(0644, root, root) "/etc/monit.d/firewalld.conf"
-%attr(0644, root, root) "/etc/monit.d/haproxy.conf.disabled"
+%attr(0644, root, root) "/etc/monit.d/haproxy.conf"
 %attr(0600, root, root) "/etc/monit.d/mysql.conf"
 %attr(0644, root, root) "/etc/monit.d/mysqlconn.conf"
 %attr(0644, root, root) "/etc/monit.d/network.conf"
 %attr(0644, root, root) "/etc/monit.d/physical.conf"
 %attr(0644, root, root) "/etc/monit.d/postfix.conf"
 %attr(0644, root, root) "/etc/monit.d/postgres.conf"
-%attr(0644, root, root) "/etc/monit.d/rspamd.conf.disabled"
+%attr(0644, root, root) "/etc/monit.d/rspamd.conf"
 %attr(0644, root, root) "/etc/monit.d/spamassassin.conf"
-%attr(0644, root, root) "/etc/monit.d/systemd-resolved.conf.disabled"
+%attr(0644, root, root) "/etc/monit.d/systemd-resolved.conf"
 %attr(0644, root, root) "/etc/monit.d/vsftpd.conf"
 %config(noreplace) %attr(0600, root, root) "/root/.mailfilter"
 %attr(0755, root, root) "/root/notify.rb"
