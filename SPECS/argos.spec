@@ -31,7 +31,7 @@ AutoReq: no
 BuildArch:     noarch
 Name:          argos
 Version:       1.0
-Release:       22.1.apnscp
+Release:       23.1.apnscp
 License:       Proprietary
 Group:         default
 Summary:       Service monitoring engine for ApisCP
@@ -169,6 +169,9 @@ if [[ $1 -eq 0 ]]; then
 fi
 
 %changelog
+* Thu Feb 13 2025 Matt Saladna <matt@apisnetworks.com> - 1.0-23.apnscp
+- Set network dependencies
+
 * Sun Jan 19 2025 Matt Saladna <matt@apisnetworks.com> - 1.0-21.apnscp
 - Add firewall-cmd --reload resuscitation on overlapping entries
 
