@@ -31,7 +31,7 @@ AutoReq: no
 BuildArch:     noarch
 Name:          argos
 Version:       1.0
-Release:       23.1.apnscp
+Release:       24.1.apnscp
 License:       Proprietary
 Group:         default
 Summary:       Service monitoring engine for ApisCP
@@ -80,28 +80,20 @@ Service monitoring engine for ApisCP
 
 %files
 %config(noreplace) %attr(0600, root, root) "/etc/monit.d/00-argos.conf"
-%attr(0644, root, root) "/etc/monit.d/apache.conf"
-%attr(0644, root, root) "/etc/monit.d/apnscp.conf"
-%attr(0644, root, root) "/etc/monit.d/authlib.conf"
+%attr(0644, root, root) "/etc/monit.d/*.conf"
+%attr(0644, root, root) "/etc/monit.d/*.conf.disabled"
+%ghost "/etc/monit.d/apache.conf"
+%ghost "/etc/monit.d/authlib.conf"
 %attr(0755, root, root) "/etc/monit.d/bins/mysqlcheck.sh"
 %attr(0755, root, root) "/etc/monit.d/bins/mysqlkill.sh"
-%attr(0644, root, root) "/etc/monit.d/clamd.conf"
-%attr(0644, root, root) "/etc/monit.d/dovecot.conf"
-%attr(0644, root, root) "/etc/monit.d/fail2ban.conf"
-%attr(0644, root, root) "/etc/monit.d/filesystem-home.conf"
-%attr(0644, root, root) "/etc/monit.d/filesystem.conf"
-%attr(0644, root, root) "/etc/monit.d/firewalld.conf"
-%attr(0644, root, root) "/etc/monit.d/haproxy.conf"
-%attr(0600, root, root) "/etc/monit.d/mysql.conf"
-%attr(0644, root, root) "/etc/monit.d/mysqlconn.conf"
-%attr(0644, root, root) "/etc/monit.d/network.conf"
-%attr(0644, root, root) "/etc/monit.d/physical.conf"
-%attr(0644, root, root) "/etc/monit.d/postfix.conf"
-%attr(0644, root, root) "/etc/monit.d/postgres.conf"
-%attr(0644, root, root) "/etc/monit.d/rspamd.conf"
-%attr(0644, root, root) "/etc/monit.d/spamassassin.conf"
-%attr(0644, root, root) "/etc/monit.d/systemd-resolved.conf"
-%attr(0644, root, root) "/etc/monit.d/vsftpd.conf"
+%ghost "/etc/monit.d/clamd.conf"
+%ghost "/etc/monit.d/dovecot.conf"
+%ghost "/etc/monit.d/filesystem-home.conf"
+%ghost "/etc/monit.d/haproxy.conf"
+%ghost "/etc/monit.d/rspamd.conf"
+%ghost "/etc/monit.d/spamassassin.conf"
+%ghost "/etc/monit.d/systemd-resolved.conf"
+%ghost "/etc/monit.d/vsftpd.conf"
 %config(noreplace) %attr(0600, root, root) "/root/.mailfilter"
 %attr(0755, root, root) "/root/notify.rb"
 %dir %attr(0600, root, root) "/var/spool/monit"
@@ -154,8 +146,8 @@ fi
 
 # Ensure password is always restricted
 [[ -f /etc/monit.d/00-argos.conf ]] && chmod 600 /etc/monit.d/00-argos.conf
-for i in /etc/monit.d/*.conf ; do
-  [[ -f $i.disabled ]] && mv $i $i.disabled
+for i in /etc/monit.d/*.conf.disabled ; do
+  [[ -f ${i%%.disabled} ]] && mv $i ${i%%.disabled}
 done
 
 /usr/bin/systemctl try-restart monit
@@ -169,6 +161,10 @@ if [[ $1 -eq 0 ]]; then
 fi
 
 %changelog
+* Sun Mar 16 2025 Matt Saladna <matt@apisnetworks.com> - 1.0-24.apnscp
+- Default to disabled on nonessential services
+- MariaDB compatibility
+
 * Thu Feb 13 2025 Matt Saladna <matt@apisnetworks.com> - 1.0-23.apnscp
 - Set network dependencies
 
