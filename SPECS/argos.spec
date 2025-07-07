@@ -31,7 +31,7 @@ AutoReq: no
 BuildArch:     noarch
 Name:          argos
 Version:       1.0
-Release:       24.1.apnscp
+Release:       27.1.apnscp
 License:       Proprietary
 Group:         default
 Summary:       Service monitoring engine for ApisCP
@@ -161,6 +161,9 @@ if [[ $1 -eq 0 ]]; then
 fi
 
 %changelog
+* Sun Jun 22 2025 Matt Saladna <matt@apisnetworks.com> - 1.0-26.apnscp
+- Load all configuration directives when stopping httpd process
+
 * Sun Mar 16 2025 Matt Saladna <matt@apisnetworks.com> - 1.0-24.apnscp
 - Default to disabled on nonessential services
 - MariaDB compatibility

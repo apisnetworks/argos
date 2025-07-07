@@ -1,7 +1,7 @@
 check process apache with pidfile /etc/httpd/run/httpd.pid
   DEPENDS ON local-network
   start "/usr/bin/systemctl start httpd"
-  stop  "/usr/sbin/httpd -k stop"
+  stop  "/usr/bin/systemctl stop httpd"
   if failed host 127.0.0.1 port 80 protocol HTTP
     request /monit.html
     with timeout 15 seconds
