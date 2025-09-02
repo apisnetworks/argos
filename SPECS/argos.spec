@@ -31,7 +31,7 @@ AutoReq: no
 BuildArch:     noarch
 Name:          argos
 Version:       1.0
-Release:       27.1.apnscp
+Release:       27.2.apnscp
 License:       Proprietary
 Group:         default
 Summary:       Service monitoring engine for ApisCP
@@ -50,7 +50,11 @@ Requires(post): /bin/sh
 Requires(postun): /bin/sh
 Requires(postun): /bin/sh
 Requires:      monit
-Requires:      python2-pip
+%if 0%{?rhel} < 8
+Requires:	python2-pip
+%else
+Requires: python3-pip
+%endif
 #Requires:      rpmlib(CompressedFileNames) <= 3.0.4-1
 #Requires:      rpmlib(FileDigests) <= 4.6.0-1
 #Requires:      rpmlib(PayloadFilesHavePrefix) <= 4.0-1

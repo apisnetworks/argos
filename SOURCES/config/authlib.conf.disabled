@@ -1,4 +1,6 @@
 CHECK PROCESS authlib WITH PIDFILE /var/spool/authdaemon/pid
+	DEPENDS ON local-network
+
 	START "/usr/bin/systemctl start courier-authlib"
 	STOP "/usr/bin/systemctl stop courier-authlib"
 	IF FAILED
