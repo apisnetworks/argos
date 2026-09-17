@@ -31,7 +31,7 @@ AutoReq: no
 BuildArch:     noarch
 Name:          argos
 Version:       1.0
-Release:       27.2.apnscp
+Release:       28.1.apnscp
 License:       Proprietary
 Group:         default
 Summary:       Service monitoring engine for ApisCP
